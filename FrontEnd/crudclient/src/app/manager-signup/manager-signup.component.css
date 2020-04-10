@@ -1,0 +1,21 @@
+body{
+    background-color:floralwhite;
+}
+.centered-form{
+	margin-top: 150px;
+}
+
+.centered-form .panel{
+	background:lightblue;
+
+}
+
+.panel-title{
+	text-align: center;
+	font-weight: bolder;
+}
+
+.btn {
+	background-color:midnightblue;
+}
+
