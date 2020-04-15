@@ -1,38 +1,70 @@
 <div class="container">
     <div class="row centered-form">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
-            <div class="panel panel-success" style="width:1000px;">
-                <div class="panel-heading">
+            <div class="panel panel-success" style="width:1100px;">
+                <div class="panel-heading font-weight-bold mb-3">
                     <h2 class="panel-title">Manager's Please sign up</h2>
-                </div>
+                </div><br>
+                <hr><br>
                 <div class="panel-group">
                     <form role="form">
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="firstname" id="firstname" class="form-control input-sm"
-                                        placeholder="First Name" #firstname>
-                                        <div *ngIf="firstname.errors.required">First Name is required</div>
+                                    <input type="text" 
+                                        name="firstname" 
+                                        id="firstname" 
+                                        class="form-control input-sm"
+                                        placeholder="First Name"  
+                                        ngModel #firstname="ngModel" required />
+                                        <div class="alert alert-danger" *ngIf="!firstname.valid && firstname.touched">
+                                            <div *ngIf="firstname.errors.required">
+                                                First Name is required.
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="lastname" id="lastname" class="form-control input-sm"
-                                        placeholder="Last Name" #lastname>
+                                    <input type="text" 
+                                        name="lastname" 
+                                        id="lastname" 
+                                        class="form-control input-sm"
+                                        placeholder="Last Name" 
+                                        ngModel #lastname="ngModel" required />
+                                    <div class="alert alert-danger" *ngIf="!lastname.valid && lastname.touched">
+                                        <div *ngIf="lastname.errors.required">
+                                            Last Name is required.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="address" id="address" class="form-control input-sm"
-                                        placeholder="Street/Survey No etc." #address>
+                                    <input type="text" 
+                                        name="address" 
+                                        id="address" 
+                                        class="form-control input-sm"
+                                        placeholder="Street/Survey No etc." 
+                                        ngModel #address="ngModel" required />
+                                    <div class="alert alert-danger" *ngIf="!address.valid && address.touched">
+                                        <div *ngIf="address.errors.required">
+                                            Last Name is required.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <input type="date" name="dob" id="dob" class="form-control input-sm"
-                                        placeholder="D.O.B" #dob />
+                                        placeholder="D.O.B" ngModel #dob="ngModel" required />
+                                    <div class="alert alert-danger" *ngIf="!dob.valid && dob.touched">
+                                        <div *ngIf="dob.errors.required">
+                                            DOB is required.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -40,27 +72,83 @@
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="contact" id="contact" class="form-control input-sm"
-                                        placeholder="Mobile" #contact>
+                                    <input type="text"
+                                        maxlength="10" 
+                                        name="contact" 
+                                        id="contact" 
+                                        class="form-control input-sm"
+                                        placeholder="Mobile"
+                                        pattern = "{{contactPattern}}" 
+                                        ngModel #contact="ngModel" required />
+                                    <div class="alert alert-danger" *ngIf="!contact.valid && contact.touched">
+                                        <div *ngIf="contact.errors.required">
+                                            Contact is required.
+                                        </div>
+                                        <div *ngIf="contact.errors.maxlength">
+                                            Please, Enter 10 digit Mobile Number.
+                                        </div>
+
+                                        <div *ngIf="contact.errors.pattern">
+                                            Please, Enter Mobile Number.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="organization" id="organization"
-                                        class="form-control input-sm" placeholder="Organization" #organization />
+                                    <input type="text" 
+                                        name="organization" 
+                                        id="organization"
+                                        class="form-control input-sm" 
+                                        placeholder="Organization" 
+                                        ngModel #organization="ngModel" required />
+                                    <div class="alert alert-danger" *ngIf="!organization.valid && organization.touched">
+                                        <div *ngIf="organization.errors.required">
+                                            Last Name is required.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                <input type="email" name="email" id="email" class="form-control input-sm"
-                                    placeholder="Email Address" #email>
+                                <input type="email" 
+                                    name="email" 
+                                    id="email" 
+                                    class="form-control input-sm"
+                                    placeholder="Email Address" 
+                                    pattern = "{{emailPattern}}"
+                                    ngModel #email="ngModel" required />
+                                <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+                                    <div *ngIf="email.errors.required">
+                                        Email ID is required.
+                                    </div>
+                                    <div *ngIf="email.errors.pattern">
+                                        Email not valid.
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="password" name="password" id="password" class="form-control input-sm"
-                                        placeholder="Password" #password>
+                                    <input type="password"
+                                        name="password" 
+                                        id="password" 
+                                        class="form-control input-sm"
+                                        placeholder="Password" 
+                                        pattern = "{{passwordPattern}}"
+                                        ngModel #password="ngModel" required />
+
+                                <div class="alert alert-danger" 
+                                        *ngIf="password.touched && !password.valid">
+                                         <div *ngIf="password.errors.required">
+                                            Password is required.
+                                        </div>
+                                        <div *ngIf="password.errors.pattern">
+                                            At least 8 characters in length, Lowercase, uppercase, numbers, special characters.
+                                        </div>
+                                        
+                                    </div>    
                                 </div>
                             </div>
 

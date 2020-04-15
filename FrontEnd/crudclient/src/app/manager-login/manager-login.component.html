@@ -1,27 +1,45 @@
-<div class="container">
+<div class="login-container">
     <br/>
-    <h1> Login Form </h1>
+    <h1> Manager Login </h1>
     <hr/>
     <br/>
     <div class="col-sm-4 col-sm-offset-3 input-position">
         <form #f=ngForm>
-            <div class="container">
-                Email :
-                <input type="email" name="email" class="form-control" ngModel #email="ngModel" required>
-                <div *ngIf="!email.valid && email.touched" class="alert alert-danger">Please Enter the Email ID
-
+            <div class="form-group">
+                <input type="email" 
+                    name="email" 
+                    placeholder="Enter the Email ID" 
+                    class="form-control"
+                    pattern = "{{emailPattern}}" 
+                    ngModel #email="ngModel" required />
+                <div *ngIf="!email.valid && email.touched" class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                        Please, Enter the Email ID
+                    </div>
+                    <div *ngIf="email.errors.pattern">
+                        Email not valid.
+                    </div>
                 </div>
 
             </div>
 
             <div class="form-group">
-                Password :
-                <input type="password" name="password" class="form-control" ngModel #password="ngModel" required>
+                <input type="password" 
+                    placeholder="Enter the password" 
+                    name="password" 
+                    class="form-control" 
+                    pattern = "{{passwordPattern}}"
+                    ngModel #password="ngModel" required />
 
-                <div *ngIf="!password.valid && password.touched" class="alert alert-danger">Please Enter the Password
-
+                <div *ngIf="!password.valid && password.touched" class="alert alert-danger">
+                    <div *ngIf="password.errors.required">
+                        Please, Enter the password.
+                    </div>
+                    <div *ngIf="password.errors.pattern">
+                        At least 8 characters in length, Lowercase, uppercase, numbers, special characters.
+                    </div>
                 </div>
-            </div>
+            </div><br>
             <div class="from-group">
                 <button class="btn btn-primary" (click)="onLogin(email.value,password.value)"
                     [disabled]="!f.valid">Login</button> &nbsp;

@@ -9,6 +9,9 @@ import { HttpserviceService } from '../httpservice.service';
 })
 export class ManagerLoginComponent implements OnInit {
 
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  passwordPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}";
+
   constructor(private router: Router, private service: HttpserviceService) { }
 
   ngOnInit() {

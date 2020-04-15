@@ -1,0 +1,40 @@
+.form-group {
+   
+}
+
+.login-container{
+  margin-top: 10%;
+  background: lightblue;
+  margin: 50px;
+  padding: 30px;
+}
+
+h1 {
+    font-family: "Times New Roman", Times, serif;
+    font-style: normal;
+    font-weight: bold;
+    font-variant: normal;
+    color: purple;
+}
+
+.form-control {
+    
+}
+
+.btn btn-primary {
+
+}
+
+input[type=text]:focus {
+    border: 2px solid blue;
+}
+
+input[type=password]:focus {
+    border: 2px solid blue;
+}
+
+hr {
+    border: 1px solid green;
+    border-radius: 5px;
+}
+
